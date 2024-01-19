@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'cars.apps.CarsConfig',
     'ckeditor', #For RichTextFeild 
     'multiselectfield', #MultiselectFeild
+    'django.contrib.humanize',
 ]
 
 MIDDLEWARE = [

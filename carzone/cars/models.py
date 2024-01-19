@@ -75,15 +75,40 @@ class Car(models.Model):
     year_choices =[]
     for i in range(2000,datetime.now().year+1):
         year_choices.append((i,i))
-            
+    sale_choices = (
+        ('Rent','Rent'),
+        ('Sale','Sale'),
+    )
+    body_style_choices = (
+        ('Hatchback','Hatchback'),
+        ('Sedan','Sedan'),
+        ('MUV/SUV','MUV/SUV'),
+        ('Coupe','Coupe'),
+        ('Convertible','Convertible'),
+        ('Wagon','Wagon'),
+        ('Van','Van'),
+        ('Jeep','Jeep'),
+    )
+    transmission_choices = (
+        ('Manual','Manual'),
+        ('Automatic','Automatic'),
+        ('Semi-Automatic','Semi-Automatic'),
+    )
+    condition_choices = (
+        ('Used','Used'),
+        ('New','New'),
+        ('Bad','Bad'),
+    )
+    
     #FEILDS
     car_title = models.CharField(max_length=255)
+    sale = models.CharField(choices = sale_choices, default = 'Sale',max_length = 100)
     state = models.CharField(choices=state_choice, max_length=100)
     city = models.CharField(max_length=100)
     color = models.CharField(max_length=100)
     model = models.CharField(max_length=100)
     year = models.IntegerField(('year'), choices=year_choices)
-    condition = models.CharField(max_length=100)
+    condition = models.CharField(choices=condition_choices,max_length=100)
     price = models.IntegerField()
     car_photo = models.ImageField(upload_to='photos/%Y/%m/%d/')
     car_photo_1 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
@@ -91,14 +116,13 @@ class Car(models.Model):
     car_photo_3 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
     car_photo_4 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
     features = MultiSelectField(choices = feature_choices,null=True,blank = True,max_length=10000, max_choices = 100)
-    body_style = models.CharField(max_length=100)
+    body_style = models.CharField(choices = body_style_choices,max_length=100)
     engine = models.CharField(max_length=100)
-    transmission = models.CharField(max_length=100)
+    transmission = models.CharField(choices = transmission_choices,max_length=100)
     interior = models.CharField(max_length=100)
     miles = models.IntegerField()
     doors = models.CharField(choices=door_choices, max_length=10)
     passengers = models.IntegerField()
-    vin_no = models.CharField(max_length=100)
     milage = models.IntegerField()
     fuel_type = models.CharField(choices=fuel_type_choice , max_length=50)
     no_of_owners = models.CharField(max_length=100)

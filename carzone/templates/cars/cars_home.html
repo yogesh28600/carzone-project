@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
-
+{% load humanize %}
 <!-- Sub banner start -->
 <div class="sub-banner overview-bgi">
     <div class="container breadcrumb-area">
@@ -27,9 +27,9 @@
                         <div class="car-box-3">
                             <div class="car-thumbnail">
                                 <a href="car-details.html" class="car-img">
-                                    <div class="tag">For Rent</div>
+                                    <div class="tag">For {{car.sale}}</div>
                                     <div class="price-box">
-                                        <span>${{car.price}}</span>
+                                        <span>Rs {{car.price | intcomma}}</span>
                                     </div>
                                     <img class="d-block w-100" src="{{car.car_photo.url}}" alt="car">
                                 </a>
@@ -72,7 +72,7 @@
                             </div>
                             <div class="detail">
                                 <h1 class="title">
-                                    <a href="car-details.html">{{car.title}}</a>
+                                    <a href="car-details.html">{{car.car_title}}</a>
                                 </h1>
                                 <div class="location">
                                     <a href="car-details.html">
@@ -81,7 +81,7 @@
                                 </div>
                                 <ul class="facilities-list clearfix">
                                     <li>{{car.fuel_type}}</li>
-                                    <li>{{car.miles}} km</li>
+                                    <li>{{car.miles | intcomma}} km</li>
                                     <li>{{car.transmission}}</li>
                                     <li>{{car.body_style}}</li>
                                     <li>{{car.color}}</li>
