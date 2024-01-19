@@ -26,7 +26,7 @@
                     <div class="col-lg-6 col-md-6">
                         <div class="car-box-3">
                             <div class="car-thumbnail">
-                                <a href="car-details.html" class="car-img">
+                                <a href="{% url 'car_details' car.id %}" class="car-img">
                                     <div class="tag">For {{car.sale}}</div>
                                     <div class="price-box">
                                         <span>Rs {{car.price | intcomma}}</span>
@@ -72,10 +72,10 @@
                             </div>
                             <div class="detail">
                                 <h1 class="title">
-                                    <a href="car-details.html">{{car.car_title}}</a>
+                                    <a href="{% url 'car_details' car.id %}">{{car.car_title}}</a>
                                 </h1>
                                 <div class="location">
-                                    <a href="car-details.html">
+                                    <a href="{% url 'car_details' car.id %}">
                                         <i class="flaticon-pin"></i>{{car.state}}. {{car.city}},
                                     </a>
                                 </div>
