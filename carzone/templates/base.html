@@ -1,7 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
 <html>
-
 <head>
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -41,25 +40,19 @@
 </head>
 <body>
 <div class="page_loader"></div>
-
-
 {% include 'includes/top.html' %}
 {% include 'includes/nav.html' %}
 {% block content %}
-
 {% endblock %}
 {% include 'includes/footer.html' %}
 <!-- Full Page Search -->
 <div id="full-page-search">
     <button type="button" class="close">×</button>
-    <form action="https://storage.googleapis.com/theme-vessel/carhouse/index.html#" class="search-header">
-        <input type="search" value="" placeholder="type keyword(s) here. Eg: audi, benz etc" />
+    <form action="{% url 'search' %}" class="search-header">
+        <input type="search" value="" name="keyword" placeholder="type keyword(s) here. Eg: audi, benz etc" />
         <button type="submit" class="btn btn-sm button-theme">Search</button>
     </form>
 </div>
-
-
-
 <script src="{%static 'js/jquery-2.2.0.min.js'%}"></script>
 <script src="{%static 'js/popper.min.js'%}"></script>
 <script src="{%static 'js/bootstrap.min.js'%}"></script>
@@ -79,8 +72,5 @@
 <script  src="{%static 'js/lightgallery-all.js'%}"></script>
 <script  src="{%static 'js/jnoty.js'%}"></script>
 <script  src="{%static 'js/app.js'%}"></script>
-
-
 </body>
-
 </html>
