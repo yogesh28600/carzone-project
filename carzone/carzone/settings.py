@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'pages.apps.PagesConfig',
     'cars.apps.CarsConfig',
-    #'accounts.apps.AccountsConfig',
+    'accounts.apps.AccountsConfig',
+    'inquiry.apps.InquiryConfig',
     'ckeditor', #For RichTextFeild 
     'multiselectfield', #MultiselectFeild
     'django.contrib.humanize',

@@ -2,6 +2,8 @@ from django.shortcuts import render,redirect
 from django.contrib.auth.models import User
 from django.contrib.auth import login,logout,authenticate
 from django.contrib import messages
+from inquiry.models import Inquiry
+from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 def login_user(request): 
@@ -41,5 +43,11 @@ def register_user(request):
             messages.error(request,'Password didnot match')
             return redirect('register')
     return render(request,'accounts/register.html')
+@login_required(login_url='login')
 def dashboard(request):
-    return render(request,'accounts/dashboard.html')
+    if request.user.is_authenticated:
+        inquiries = Inquiry.objects.order_by('-created_date').filter(user_id = request.user.id)
+        data = {
+            'inquiries':inquiries,
+        }
+    return render(request,'accounts/dashboard.html',data)
