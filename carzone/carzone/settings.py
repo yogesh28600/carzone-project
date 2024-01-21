@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'pages.apps.PagesConfig',
     'cars.apps.CarsConfig',
+    #'accounts.apps.AccountsConfig',
     'ckeditor', #For RichTextFeild 
     'multiselectfield', #MultiselectFeild
     'django.contrib.humanize',
@@ -132,6 +133,12 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Media settings
-import os
 MEDIA_ROOT = BASE_DIR/'media'
 MEDIA_URL = '/media/'
+
+#Messages
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.ERROR: "danger",
+    messages.SUCCESS: "success",
+}
