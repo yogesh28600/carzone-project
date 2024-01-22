@@ -209,19 +209,18 @@
                                 
                                 {% csrf_token %}
                                 <input type="hidden" name="car_id" value="{{car.id}}" />
-                                {% if user.is_authenticated %}
+                                <input type="hidden" name="car_title" value="{{car.car_title}}" />
+                                <input type="hidden" name="car_model" value="{{car.model}}" />
+                                <input type="hidden" name="car_price" value="{{car.price}}" />
                                 <input type="hidden" name="user_id" value="{{user.id}}" />
-                                {% else %}
-                                <input type="hidden" name="user_id" value='0' />
-                                {% endif %}
                                 <div class="form-group">
                                   <label for="name" class="col-form-label">Hello, My Name is</label>
                                   <div class="row">
                                     <div class="col">
-                                      <input type="text" name="first_name" class="form-control" placeholder="First Name" required>
+                                      <input type="text" name="first_name" class="form-control" placeholder="First Name" value="{{user.first_name}}" required>
                                     </div>
                                     <div class="col">
-                                      <input type="text" name="last_name" class="form-control" placeholder="Last Name" required>
+                                      <input type="text" name="last_name" class="form-control" placeholder="Last Name" value="{{user.last_name}}" required>
                                     </div>
                                   </div>
                                 </div>
@@ -249,7 +248,7 @@
                                   <div class="row">
                                     <div class="col">
                                         <label for="name" class="col-form-label">You can reach me by email at</label>
-                                      <input type="email" name="email" class="form-control" placeholder="Email Address" required>
+                                      <input type="email" name="email" class="form-control" placeholder="Email Address" value="{{user.email}}" required>
                                     </div>
                                     <div class="col">
                                         <label for="phone" class="col-form-label">or by phone at</label>

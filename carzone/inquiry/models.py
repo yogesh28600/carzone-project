@@ -13,6 +13,9 @@ class Inquiry(models.Model):
     phone = models.IntegerField(blank=True,null=True)
     comment = models.TextField(max_length=1000,blank=True,null=True)
     car_id = models.IntegerField()
+    car_title = models.CharField(max_length=100)
+    car_model = models.CharField(max_length=100)
+    car_price = models.DecimalField(max_digits=20, decimal_places=0)
     user_id = models.IntegerField()
     created_date = models.DateTimeField(auto_now_add = True,null=True)
 

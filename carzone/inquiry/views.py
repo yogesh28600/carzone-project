@@ -4,8 +4,6 @@ from django.contrib import messages
 import numbers
 # Create your views here.
 def inquiry(request):
-    if  request.user.is_authenticaed() is False:
-         messages.error(request,'Login to make an Inqury')
     if request.method == 'POST':
             first_name = request.POST['first_name']
             last_name = request.POST['last_name']
@@ -15,6 +13,9 @@ def inquiry(request):
             email = request.POST['email']
             phone = request.POST['phone'] 
             car_id = request.POST['car_id']
+            car_title = request.POST['car_title']
+            car_model = request.POST['car_model']
+            car_price = request.POST['car_price']
             user_id = request.POST['user_id']
             comment = request.POST['message']
             has_contacted = Inquiry.objects.all().filter(user_id=user_id,car_id=car_id)
@@ -22,7 +23,7 @@ def inquiry(request):
                 messages.error(request,'You have already inquired about this car. Please wait for response')
                 return redirect('/cars/'+car_id)
             else:
-                inquire = Inquiry(first_name=first_name,last_name=last_name,topic=topic,city=city,state=state,email=email,car_id=car_id,user_id=user_id,comment=comment)
+                inquire = Inquiry(first_name=first_name,last_name=last_name,topic=topic,city=city,state=state,email=email,car_id=car_id,car_title=car_title,car_model=car_model,car_price=car_price,user_id=user_id,comment=comment)
                 if  phone.isdigit() and len(phone) == 10 :
                     inquire.phone=int(phone)
                 if inquire is not None:

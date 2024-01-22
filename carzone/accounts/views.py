@@ -47,6 +47,7 @@ def register_user(request):
 def dashboard(request):
     if request.user.is_authenticated:
         inquiries = Inquiry.objects.order_by('-created_date').filter(user_id = request.user.id)
+        print(inquiries)
         data = {
             'inquiries':inquiries,
         }

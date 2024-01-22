@@ -4,11 +4,25 @@ from django.core.paginator import Paginator
 # Create your views here.
 def cars_home(request):
     cars = Car.objects.order_by('-created_date')
+
+    models = Car.objects.values_list('model', flat=True).distinct()
+    years = Car.objects.values_list('year', flat=True).distinct()
+    cities = Car.objects.values_list('city', flat=True).distinct()
+    conditions = Car.objects.values_list('condition', flat=True).distinct()
+    body_styles = Car.objects.values_list('body_style', flat=True).distinct()
+    transmissions = Car.objects.values_list('transmission', flat=True).distinct()
+
     paginator = Paginator(cars,4)
     page = request.GET.get('page')
     paged_cars = paginator.get_page(page)
     data = {
         'cars':paged_cars,
+        'models':models,
+        'years':years,
+        'cities':cities,
+        'conditions':conditions,
+        'body_styles':body_styles,
+        'transmissions':transmissions,
     }
     return render(request,'cars/cars_home.html',data)
 def car_details(request,id):
