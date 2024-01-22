@@ -17,6 +17,7 @@
 <!--   Dashboard Start   -->
 <div class="container mt-50 mb-50">
 	<div class="main-title" style="text-align:left !important;">
+		{% include 'includes/messages.html' %}
             <h1>Welcome <span>{{user.get_username |title}}</span></h1>
             <p>Here are the cars that you have inquired about</p>
         </div>

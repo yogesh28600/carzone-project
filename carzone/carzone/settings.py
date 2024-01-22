@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+LOGIN_REDIRECT_URL='dashboard'
 # Application definition
 
 INSTALLED_APPS = [
@@ -44,6 +44,16 @@ INSTALLED_APPS = [
     'ckeditor', #For RichTextFeild 
     'multiselectfield', #MultiselectFeild
     'django.contrib.humanize',
+
+    #Third-party login
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    # Providers
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
+
 ]
 
 MIDDLEWARE = [
@@ -54,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'allauth.account.middleware.AccountMiddleware',
 ]
 
 ROOT_URLCONF = 'carzone.urls'
@@ -143,3 +154,5 @@ MESSAGE_TAGS = {
     messages.ERROR: "danger",
     messages.SUCCESS: "success",
 }
+
+SITE_ID = 1
