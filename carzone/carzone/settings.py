@@ -162,5 +162,5 @@ SITE_ID = 1
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = ''#sender's email
-EMAIL_HOST_PASSWORD = ''#Generated email app password
+EMAIL_HOST_USER = '############' #Receiver's Gmail
+EMAIL_HOST_PASSWORD = '##############' #generated email from gmail app passwords settings
