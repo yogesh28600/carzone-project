@@ -50,21 +50,6 @@ class Car(models.Model):
         ("UK","Uttarakhand"),
         ("WB","West Bengal")
     )
-    feature_choices = (
-        ('Cruise Control', 'Cruise Control'),
-        ('Audio Interface', 'Audio Interface'),
-        ('Airbags', 'Airbags'),
-        ('Air Conditioning', 'Air Conditioning'),
-        ('Seat Heating', 'Seat Heating'),
-        ('Alarm System', 'Alarm System'),
-        ('ParkAssist', 'ParkAssist'),
-        ('Power Steering', 'Power Steering'),
-        ('Reversing Camera', 'Reversing Camera'),
-        ('Direct Fuel Injection', 'Direct Fuel Injection'),
-        ('Auto Start/Stop', 'Auto Start/Stop'),
-        ('Wind Deflector', 'Wind Deflector'),
-        ('Bluetooth Handset', 'Bluetooth Handset'),
-    )
     door_choices = (
         ('2', '2'),
         ('3', '3'),
@@ -115,7 +100,7 @@ class Car(models.Model):
     car_photo_2 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
     car_photo_3 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
     car_photo_4 = models.ImageField(upload_to='photos/%Y/%m/%d/', blank=True)
-    features = MultiSelectField(choices = feature_choices,null=True,blank = True,max_length=10000, max_choices = 100)
+    features = models.TextField()
     body_style = models.CharField(choices = body_style_choices,max_length=100)
     engine = models.CharField(max_length=100)
     transmission = models.CharField(choices = transmission_choices,max_length=100)

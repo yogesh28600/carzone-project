@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-$$l@go5k%ot9^_k222*mopta+$ois1))@g%vy1ka3_&$9b2ect'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DEBUG')
 
 ALLOWED_HOSTS = []
 
@@ -94,8 +95,12 @@ WSGI_APPLICATION = 'carzone.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'carzoneDb',
+        'HOST': os.environ.get('DB_Host'),
+        'USER': os.environ.get('DB_User'),
+        'PASSWORD': os.environ.get('DB_Password'),
+
     }
 }
 
@@ -162,5 +167,5 @@ SITE_ID = 1
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = '############' #Receiver's Gmail
-EMAIL_HOST_PASSWORD = '##############' #generated email from gmail app passwords settings
+EMAIL_HOST_USER = 'yogeshkumarnandi@gmail.com' #Receiver's Gmail
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD') #generated email from gmail app passwords settings
