@@ -4,13 +4,15 @@ cffi==1.16.0
 charset-normalizer==3.3.2
 cryptography==42.0.2
 defusedxml==0.7.1
-Django==5.0.1
+Django==4.2.9
 django-allauth==0.60.1
 django-ckeditor==6.7.0
 django-js-asset==2.2.0
 django-multiselectfield==0.1.12
+gunicorn==21.2.0
 idna==3.6
 oauthlib==3.2.2
+packaging==23.2
 pillow==10.2.0
 psycopg2-binary==2.9.9
 pycparser==2.21
