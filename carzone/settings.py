@@ -27,6 +27,7 @@ SECRET_KEY = 'django-insecure-$$l@go5k%ot9^_k222*mopta+$ois1))@g%vy1ka3_&$9b2ect
 DEBUG = os.environ.get('DEBUG')
 
 ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = ['https://web-production-8a05.up.railway.app/']
 
 LOGIN_REDIRECT_URL='dashboard'
 
